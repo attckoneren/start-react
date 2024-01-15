@@ -3,16 +3,21 @@ import Home from "./routes/Home";
 import Detail from "./routes/Detail";
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createBrowserRouter(
+    [
+      {
+        path: `/`,
+        element: <Home />,
+      },
+      {
+        path: "/movie/:id",
+        element: <Detail />,
+      },
+    ],
     {
-      path: `${process.env.PUBLIC_URL}/`,
-      element: <Home />,
-    },
-    {
-      path: `${process.env.PUBLIC_URL}/movie/:id`,
-      element: <Detail />,
-    },
-  ]);
+      basename: process.env.PUBLIC_URL,
+    }
+  );
   return <RouterProvider router={router} />;
 }
 

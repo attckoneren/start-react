@@ -5,11 +5,11 @@ const Movies = ({ id, coverImg, title, year, summary, genres }) => {
     <div>
       <img src={coverImg} alt={title} />
       <h2>
-        <Link to={`${process.env.PUBLIC_URL}/movie/${id}`}>
+        <Link to={`/movie/${id}`}>
           {title} ({year})
         </Link>
       </h2>
-      <p>{summary}</p>
+      <p>{summary.length > 300 ? `${summary.slice(0, 300)} ...` : summary}</p>
       <ul>{genres && genres.map((g) => <li key={g}>{g}</li>)}</ul>
     </div>
   );
