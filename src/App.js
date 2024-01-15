@@ -9,7 +9,7 @@ function App() {
       element: <Home />,
     },
     {
-      path: process.env.PUBLIC_URL + "/movie/:id",
+      path: "/movie/:id",
       element: <Detail />,
     },
   ]);
