@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
 import Movies from "../components/Movies";
+import styles from "./Home.module.css";
+import load from "./Loading.module.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -18,11 +23,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
-        <h1>Loading...</h1>
+        <div className={load.loader}>
+          <FontAwesomeIcon icon={faSpinner} />
+        </div>
       ) : (
-        <div>
+        <div className={styles.movies}>
           {movies.map((movie) => (
             <Movies
               key={movie.id}

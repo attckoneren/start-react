@@ -1,6 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MovieDetail from "../components/MovieDetail";
+import load from "./Loading.module.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const Detail = () => {
   const [loading, setLoading] = useState(true);
@@ -20,7 +24,9 @@ const Detail = () => {
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
+        <div className={load.loader}>
+          <FontAwesomeIcon icon={faSpinner} />
+        </div>
       ) : (
         <div>
           <MovieDetail
