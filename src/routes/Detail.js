@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import MovieDetail from "../components/MovieDetail";
 import load from "./Loading.module.css";
+import Header from "../components/Header";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -20,27 +22,29 @@ const Detail = () => {
   useEffect(() => {
     getMovie();
   }, []);
-
   return (
-    <div>
-      {loading ? (
-        <div className={load.loader}>
-          <FontAwesomeIcon icon={faSpinner} />
-        </div>
-      ) : (
-        <div>
-          <MovieDetail
-            key={movie.id}
-            coverImg={movie.large_cover_image}
-            title={movie.title_long}
-            rating={movie.rating}
-            runtime={movie.runtime}
-            description={movie.description_full}
-            genres={movie.genres}
-          />
-        </div>
-      )}
-    </div>
+    <>
+      <Header />
+      <div>
+        {loading ? (
+          <div className={load.loader}>
+            <FontAwesomeIcon icon={faSpinner} />
+          </div>
+        ) : (
+          <div>
+            <MovieDetail
+              key={movie.id}
+              coverImg={movie.large_cover_image}
+              title={movie.title_long}
+              rating={movie.rating}
+              runtime={movie.runtime}
+              description={movie.description_full}
+              genres={movie.genres}
+            />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
